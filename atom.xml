@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://cpp-coding.github.io</id>
+    <title>关于C++的一切</title>
+    <updated>2020-04-07T23:58:41.636Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://cpp-coding.github.io"/>
+    <link rel="self" href="https://cpp-coding.github.io/atom.xml"/>
+    <subtitle>关于C++的一切.
+All about c++.
+我trl!
+您tjl!</subtitle>
+    <logo>https://cpp-coding.github.io/images/avatar.png</logo>
+    <icon>https://cpp-coding.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, 关于C++的一切</rights>
+    <entry>
+        <title type="html"><![CDATA[ AtCoder 150]]></title>
+        <id>https://cpp-coding.github.io/atcoder-150/</id>
+        <link href="https://cpp-coding.github.io/atcoder-150/">
+        </link>
+        <updated>2020-04-07T03:33:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>ABC 150 All-In-One</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>ABC 150 All-In-One</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello World!]]></title>
+        <id>https://cpp-coding.github.io/hello-world/</id>
+        <link href="https://cpp-coding.github.io/hello-world/">
+        </link>
+        <updated>2020-04-07T03:29:44.000Z</updated>
+    </entry>
+</feed>

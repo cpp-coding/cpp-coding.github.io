@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title> AtCoder 150 | 关于C++的一切</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586303911702">
+<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="ABC 150 All-In-One
+
+题目清单
+Submit
+
+
+
+
+Task Name
+Time Limit
+Memory Limit
+
+
+
+
+A
+500 Yen Coins
+2 sec
+1024 MB
+
+
+B
+Count ABC
+2 ..." />
+    <meta name="keywords" content="Atcoder" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://cpp-coding.github.io">
+        <img src="https://cpp-coding.github.io/images/avatar.png?v=1586303911702" class="site-logo">
+        <h1 class="site-title">关于C++的一切</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      关于C++的一切.
+All about c++.
+我trl!
+您tjl!
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title"> AtCoder 150</h2>
+            <div class="post-date">2020-04-07</div>
+            
+            <div class="post-content" v-pre>
+              <p>ABC 150 All-In-One</p>
+<!-- more -->
+<h1 id="题目清单">题目清单</h1>
+<h2 id="submit"><a href="https://atcoder.jp/contests/abc161/submit">Submit</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Task Name</th>
+<th>Time Limit</th>
+<th>Memory Limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>500 Yen Coins</td>
+<td>2 sec</td>
+<td>1024 MB</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Count ABC</td>
+<td>2 sec</td>
+<td>1024 MB</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Count Order</td>
+<td>2 sec</td>
+<td>1024 MB</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Semi Common Multiple</td>
+<td>2 sec</td>
+<td>1024 MB</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Change a Little Bit</td>
+<td>2 sec</td>
+<td>1024 MB</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Xor Shift</td>
+<td>2 sec</td>
+<td>1024 MB</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<hr>
+<hr>
+<h2 id="a-500-yen-coins">A - 500 Yen Coins</h2>
+<blockquote>
+<p>Time Limit: 2 sec / Memory Limit: 1024 MB</p>
+<p>Score : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span> points</p>
+</blockquote>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>Takahashi has <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span> 500-yem coins. (Yen is the currency of Japan.) If these coins add up to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> yen or more, print <code>Yes</code>. Otherwise print <code>No</code>.</p>
+<h3 id="constraints">Constraints</h3>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>≤</mo><mi>K</mi><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">1 \leq K \leq 100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>≤</mo><mi>X</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \leq X \leq 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<h3 id="input">Input</h3>
+<p>Input is given from Standard Input in the following format:</p>
+<pre><code>K X
+</code></pre>
+<h3 id="output">Output</h3>
+<p>If the coins add up to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> yen or more, print <code>Yes</code>; otherwise, print <code>No</code>.</p>
+<hr>
+<h3 id="sample-1">Sample 1</h3>
+<h4 id="input-2">Input</h4>
+<pre><code>2 900
+</code></pre>
+<h4 id="output-2">Output</h4>
+<pre><code>Yes
+</code></pre>
+<h3 id="sample-2">Sample 2</h3>
+<h4 id="input-3">Input</h4>
+<pre><code>1 501
+</code></pre>
+<h4 id="output-3">Output</h4>
+<pre><code>No
+</code></pre>
+<hr>
+<hr>
+<h2 id="b-count-abc">B - Count ABC</h2>
+<blockquote>
+<p>Time Limit: 2 sec / Memory Limit: 1024 MB</p>
+<p>Score :  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>200</mn></mrow><annotation encoding="application/x-tex">200</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span></span></span></span>  points</p>
+</blockquote>
+<h3 id="problem-statement-2">Problem Statement</h3>
+<p>We have a string <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> of length <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> consisting of uppercase English letters.</p>
+<p>How many times does <code>ABC</code> occur in <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> as contiguous subsequences (see Sample Inputs and Outputs)?</p>
+<h3 id="constraints-2">Constraints</h3>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>≤</mo><mi>N</mi><mo>≤</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">3 \leq N \leq 50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> consists of uppercase English letters.</li>
+</ul>
+<h3 id="input-4">Input</h3>
+<p>Input is given from Standard Input in the following format:</p>
+<pre><code>N
+S
+</code></pre>
+<h3 id="output-4">Output</h3>
+<p>Print number of occurrences of <code>ABC</code> in <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> as contiguous subsequences.</p>
+<h3 id="sample-1-2">Sample 1</h3>
+<h4 id="input-5">Input</h4>
+<pre><code>10
+ZABCDABCQ
+</code></pre>
+<h4 id="output-5">Output</h4>
+<pre><code>2
+</code></pre>
+<p>Two contiguous subsequences of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> are equal to <code>ABC</code>: the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>-nd through <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>-th characters, and the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>-th through <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span>-th characters.</p>
+<h3 id="sample-2-2">Sample 2</h3>
+<h4 id="input-6">Input</h4>
+<pre><code>19
+THREEONEFOURONEFIVE
+</code></pre>
+<h4 id="output-6">Output</h4>
+<pre><code>0
+</code></pre>
+<p>No contiguous subsequences of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> are equal to <code>ABC</code>.</p>
+<h2 id="c-count-order">C - Count Order</h2>
+<blockquote>
+<p>Time Limit: 2 sec / Memory Limit: 1024 MB</p>
+<p>Score : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>300</mn></mrow><annotation encoding="application/x-tex">300</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mord">0</span></span></span></span> points</p>
+</blockquote>
+<h3 id="problem-statement-3">Problem Statement</h3>
+<p>We have 2 permutations <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span> of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> (that is, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span> are both rearrangements of<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(1,2,...,N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>).<br>
+There are <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>!</mo></mrow><annotation encoding="application/x-tex">N!</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">!</span></span></span></span> possible permutations of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>. Among them, let <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span>  be the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>-th and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>-th lexicographically smallest permutations, respectively. Find <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>a</mi><mo>−</mo><mi>b</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|a-b|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mord">∣</span></span></span></span>.</p>
+<h3 id="notes">Notes</h3>
+<p>For two sequences <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> is said to be lexicographically smaller than <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> if and only if there exists an integer <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> such that <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><msub><mi>Y</mi><mi>i</mi></msub><mtext> </mtext><mo>(</mo><mn>1</mn><mo>≤</mo><mi>i</mi><mo>&lt;</mo><mi>k</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">X_i = Y_i~(1 \leq i &lt; k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace nobreak"> </span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69862em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>k</mi></msub><mo>&lt;</mo><msub><mi>Y</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">X_k &lt; Y_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="constraints-3">Constraints</h3>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>≤</mo><mi>N</mi><mo>≤</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">2\leq N\leq 8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">Q</span></span></span></span> are permutations of size <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>.</li>
+</ul>
+<h3 id="input-7">Input</h3>
+<p>Input is given from Standard Input in the following format:</p>
+<pre><code>N 
+P1 P2 ... PN
+Q1 Q2 ... QN
+</code></pre>
+<h3 id="output-7">Output</h3>
+<p>Print <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>a</mi><mo>−</mo><mi>b</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|a-b|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mord">∣</span></span></span></span>.</p>
+<h3 id="sample">Sample</h3>
+<h4 id="input-8">Input</h4>
+<pre><code>3
+1 3 2 
+3 1 2
+</code></pre>
+<h4 id="output-8">Output</h4>
+<pre><code>3
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/04/07/GRobQJ5WstMPA7C.png" alt="image.png" loading="lazy"></figure>
+<h2 id="d-semi-common-multiple">D - Semi Common Multiple</h2>
+<blockquote>
+<p>Time Limit : 2 sec / Memory Limit: 1024 MB</p>
+<p>Score : $ 400$ points</p>
+</blockquote>
+<h3 id="problem-statement-4">Problem Statement</h3>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/04/07/5xG8jdy7gUnNB61.png" alt="image.png" loading="lazy"></figure>
+<h3 id="constraints-4">Constraints</h3>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>≤</mo><mi>N</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \leq N \leq 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>≤</mo><mi>M</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">1 \leq M\leq 10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>≤</mo><msub><mi>a</mi><mi>i</mi></msub><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">2 \leq a_i \leq 10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7859700000000001em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<h3 id="input-9">Input</h3>
+<p>Input is given from Standard Input in the following format:</p>
+<pre><code>N M
+a1 a2 ... aN
+</code></pre>
+<h3 id="output-9">Output</h3>
+<p>Print the number of semi-common multiples of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span> among the integers between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span> (inclusive).</p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/04/07/nplmXt4jiy8z2YM.png" alt="image.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2020/04/07/WxJsMwlYZoN1bEG.png" alt="image.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2020/04/07/odLC1hmtAyxTunw.png" alt="image.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2020/04/07/KIe5Gxy1Ld6kpu4.png" alt="image.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://i.loli.net/2020/04/07/PJxV4cuZdXC8ejh.png" alt="image.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://i.loli.net/2020/04/07/nb3uVT8lHwRPQ5N.png" alt="image.png" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://i.loli.net/2020/04/07/Jef1kC6URP583zb.png" alt="image.png" loading="lazy"></figure>
+<hr>
+<h2 id="atcoder比赛原题为英文题面还是希望oier们提高读题技巧-中文翻译a-d将会在abc170停止供应">Atcoder比赛原题为英文题面,还是希望OIer们提高读题技巧. 中文翻译(A-D)将会在ABC170停止供应.</h2>
+<h2 id="中文翻译problem-statement">中文翻译(Problem Statement)</h2>
+<h3 id="a">Ａ</h3>
+<p>高桥有K个500日元硬币。（日元是日本的货币。）如果这些硬币加起来等于X日元或更多，打印Yes；否则，打印No。</p>
+<h3 id="b">B</h3>
+<p>我们有一个字符串S长度为N 由大写英文字母组成。<br>
+S中ABC有多少次 作为连续的子序列出现?（请参阅示例输入和输出）</p>
+<h3 id="c">C</h3>
+<p>我们有两个大小为N的置换P和Q（即P和Q都是（1，2，…，N）的重排). 总共有N!种的可能置换。其中，P和Q分别是第a个和第b个字典序最小的置换。找到| a−b |。</p>
+<h3 id="d">D</h3>
+<p>给定N个正偶数的序列a=a1，a2，……aN和整数M。设a的半公倍数为正整数X，满足以下条件：每k（1≤k≤N）存在一个非负整数使X=ak*（p+0.5）。<br>
+求1到M（含）之间整数中A的半公共倍数。</p>
+<hr>
+<hr>
+<hr>
+<h2 id="以下为题解没做完的别看">以下为题解,没做完的别看!</h2>
+<h3 id="word-版题解下载">Word 版题解下载</h3>
+<p><a href="https://www.90pan.com/b1802784" target="_blank">150.docx</a><br>
+密码：2i3c</p>
+<h3 id="pdf-版题解下载">PDF 版题解下载</h3>
+<p><a href="https://www.90pan.com/b1802786" target="_blank">150.pdf</a><br>
+密码：8d4d</p>
+<h3 id="a-2">A</h3>
+<p>Takahashi has 500 × K yen. Compare this with X, and if 500 × K is greater than or equal to X then the answer is Yes, otherwise No.<br>
+高桥有500×K日元。将其与X进行比较，如果500×K大于或等于X，则答案为“Yes”，否则为“No”。</p>
+<pre><code class="language-c">1 #include &lt;stdio.h&gt;
+2
+3 int main(){
+4 int K,X;
+5 scanf(&quot;%d%d&quot;,&amp;K,&amp;X);
+6 if(500*K&gt;=X)printf(&quot;Yes\n&quot;);
+7 else printf(&quot;No\n&quot;);
+8 }
+</code></pre>
+<h3 id="b-2">B</h3>
+<p>For all i (0 ≤ i ≤ n − 3), check if 3 letters starting from Si is equal to  ABC, and it's sufficient.<br>
+对于所有i（0≤i≤n−3），检查是否有3个以Si开头的字母等于ABC，就足够了。</p>
+<pre><code class="language-c">1 #include&lt;bits/stdc++.h&gt;
+2 using namespace std;
+3
+4 int main() {
+5 int n;
+6 string s;
+7 cin &gt;&gt; n &gt;&gt; s;
+8 int ans = 0;
+9 for(int i = 0; i &lt;= n - 3; i++) {
+10 if(s[i] == 'A' &amp;&amp; s[i + 1] == 'B' &amp;&amp; s[i + 2] == 'C') ans++;
+11 }
+12 cout &lt;&lt; ans &lt;&lt; endl;
+13 return 0;
+14 }
+</code></pre>
+<h3 id="c-2">C</h3>
+<p>X is the k-th in a lexicographical order if and only if there exist k − 1 permutations that are lexicographically smaller than X. Therefore, you can solve this problem by generating all the permutations of length N, and counting how many permutations are smaller than P, Q. When generating permutations, you can perform searching such as Depth-First Search, or you<br>
+can also utilize functions generating permutations such as next permutation function in C++.<br>
+当且仅当存在字典序小于X的k-1置换时，X是字典序中的k-th。因此，可以通过生成长度N的所有置换并计算有多少置换小于P，Q来解决此问题。当生成置换时，您可以执行搜索，例如深度优先搜索，或者<br>
+还可以利用C++中的<code>nextpermulation()</code>。</p>
+<pre><code class="language-c">1 #include &lt;bits/stdc++.h&gt;
+2 #include &lt;iostream&gt;
+3 using namespace std;
+4 int main(){
+5 	long long n,k;
+6     cin&gt;&gt;n&gt;&gt;k;
+7     cout&lt;&lt;min(n%k,k-n%k)&lt;&lt;endl;
+8 	return 0;
+9 }
+
+</code></pre>
+<h3 id="d-2">D</h3>
+<p>The condition that X is a semi-common multiple of A can be rephrased as follows:<br>
+• For all k(1 ≤ k ≤ N), there exists a non-negative integer p such that X = (ak/2)∗(2p+ 1).<br>
+Since X is an odd-number-times multiple of ak/2, it can be divided into the  following two<br>
+conditions:<br>
+• For all k(1 ≤ k ≤ N), X is a multiple of ak/2.<br>
+• For all k(1 ≤ k ≤ N), the number of times X is divided by 2 is equal to the number of times ak/2 is divided by 2.<br>
+If there exist i, j such that the number of times ai is divided by 2 and the number of times aj is divided by 2, then there does not exists X such that satisfies the conditions.<br>
+Assume that there doesn’t exist such i, j. Let T be the least common multiple of T. Then,<br>
+odd-number-times multiples of T satisfies the conditions, so you can find the number of X that meets the conditions.<br>
+X是a的半公共倍数的条件可以重新表述如下：<br>
+•对于所有k（1≤k≤N），存在一个非负整数p，使得X=（ak/2）∗（2p+1）。<br>
+因为X是ak/2的奇数倍，所以它可以分为以下两个条件：<br>
+•对于所有k（1≤k≤N），X是ak/2的倍数。<br>
+•对于所有k（1≤k≤N），X除以2的次数等于ak/2除以2的次数。<br>
+如果存在i，j使得ai的次数除以2，并且aj的次数除以2，则不存在满足条件的X。<br>
+假设不存在这样的i，j。设t为t的最小公倍数。那么，<br>
+奇数乘以满足条件的T的倍数，就可以得到满足条件的X的个数。</p>
+<pre><code class="language-c">1 #include &lt;bits/stdc++.h&gt;
+2 using namespace std;
+3 int main() {
+4   	int k;
+5   	cin &gt;&gt; k;
+6 	    queue&lt;long long&gt; q;
+7 	   for (int i = 1; i &lt; 10; ++i) {
+8 		    q.push(i);
+9   	}
+10 	  for (int i = 0; i &lt; k - 1; ++i) {
+11 		    long long x = q.front();
+12 		    q.pop();
+13 		    int r = x % 10;
+14 		    if (r &gt; 0) {
+15 		    	q.push(x * 10 + r - 1);
+16 		    }
+17 		    q.push(x * 10 + r);
+18 		    if (r &lt; 9) {
+19 			    q.push(x * 10 + r + 1);
+20 		    }
+21  	}
+22 	   cout &lt;&lt; q.front();	
+23 	   return 0;
+24 }
+</code></pre>
+<h3 id="e">E</h3>
+<figure data-type="image" tabindex="10"><img src="https://i.loli.net/2020/04/07/2KTXUoidANDCQI1.png" alt="image.png" loading="lazy"></figure>
+<p>翻译就有点难为我了. 算了吧.</p>
+<pre><code class="language-c">1 #include&lt;bits/stdc++.h&gt;
+2 using namespace std;
+3 char workd[200004];
+4 int l[200004],r[200004],n,k,c;
+5 int main(){
+6 	scanf(&quot;%d%d%d&quot;,&amp;n,&amp;k,&amp;c);
+7 	scanf(&quot;%s&quot;,workd+1);
+8	int cnt=0;
+9 	for(int i=1;i&lt;=n;i++){
+10 		if(workd[i]=='o')l[++cnt]=i,i+=c;
+11 		if(cnt&gt;=k)break;
+12 	}
+13 	cnt=k;
+14 	for(int i=n;i&gt;=1;i--){
+15 		if(workd[i]=='o')r[cnt--]=i,i-=c;
+16 		if(cnt&lt;1)break;
+17 	}
+18 	for(int i=1;i&lt;=k;i++)if(l[i]==r[i])printf(&quot;%d\n&quot;,l[i]);
+19  return 0;
+}
+</code></pre>
+<h3 id="f">F</h3>
+<figure data-type="image" tabindex="11"><img src="https://i.loli.net/2020/04/07/E9LTYWnlicvofSr.png" alt="image.png" loading="lazy"></figure>
+<pre><code class="language-c">1 #include &lt;bits/stdc++.h&gt;
+2 using namespace std;
+3 long long n, cnt, i, j;
+4 void f(long long p, long long q) {
+5 	while (p % q == 0) p /= q;
+6 	if (p % q == 1) cnt++;
+7 }
+8 int main(){
+9 	cin &gt;&gt; n;
+10 	if (n == 2) cout &lt;&lt; 1,return 0;
+11 	for (i = 2; i * i &lt;= n; i++)  if (n % i == 0) f(n, i);if (n / i != i) f(n, n / i);
+12 	for (i = 2; i * i &lt;= n - 1; i++) {
+13		if ((n - 1) % i == 0) 	cnt += 2,if (i * i == n - 1) cnt--;
+14		}
+15	}
+16	cout &lt;&lt; cnt + 2;
+17   return 0;
+18 }
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://cpp-coding.github.io/atcoder/" class="tag">
+                    Atcoder
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://cpp-coding.github.io/hello-world/">
+                  <h3 class="post-title">
+                    Hello World!
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
