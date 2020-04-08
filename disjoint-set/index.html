@@ -4,107 +4,97 @@
     <meta charset="utf-8" >
 
 <title>模板-并查集 | 关于C++的一切</title>
+<meta name="description" content="关于C++的一切.
+All about c++.
+我trl!
+您tjl!">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586336478683">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586336195605">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
 
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
-
-    <meta name="description" content="模板系列-并查集
-
-题面
-原题链接
-题目描述
-如题，现在有一个并查集，你需要完成合并和查询操作。
-输入格式
-第一行包含两个整数 N,MN,MN,M,表示共有 NNN 个元素和 MMM 个操作。
-接下来 MMM 行，每行包含三个整数 Zi,X..." />
-    <meta name="keywords" content="模板" />
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://cpp-coding.github.io">
-        <img src="https://cpp-coding.github.io/images/avatar.png?v=1586336195605" class="site-logo">
-        <h1 class="site-title">关于C++的一切</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://cpp-coding.github.io">关于C++的一切</a></h3>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      关于C++的一切.
-All about c++.
-我trl!
-您tjl!
-    </div>
-    <div class="site-footer">
-       | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">模板-并查集</h2>
-            <div class="post-date">2020-04-08</div>
+          <li>
             
-            <div class="post-content" v-pre>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>模板-并查集</h1>
+            <p class="article-meta">
+              2020-04-08
+              
+                <a href="https://cpp-coding.github.io/templates/" class="badge secondary">
+                  模板
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
               <p>模板系列-并查集</p>
 <!-- more -->
 <h1 id="题面">题面</h1>
@@ -245,49 +235,125 @@ int main(){
 </ul>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://cpp-coding.github.io/templates/" class="tag">
-                    模板
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://cpp-coding.github.io/Quick-sort/">
-                  <h3 class="post-title">
-                    模板-快速排序
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://cpp-coding.github.io/Quick-sort/">
+                <h3 class="post-title">
+                  模板-快速排序
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://cpp-coding.github.io/images/avatar.png?v=1586336478683" class="no-responsive avatar">
+    <div class="text-muted">关于C++的一切.
+All about c++.
+我trl!
+您tjl!</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/single-source-shortest-route/">模板-单源最短路径</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/fast-power/">模板-快速幂||取模运算</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/disjoint-set/">模板-并查集</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/Quick-sort/">模板-快速排序</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/atcoder-150/"> AtCoder 150</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/hello-world/">Hello World!</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://cpp-coding.github.io/templates/" class="badge secondary">
+          模板
+        </a>
+      
+        <a href="https://cpp-coding.github.io/atcoder/" class="badge success">
+          Atcoder
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+     | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
 <script type="application/javascript">
 
 AOS.init();
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+hljs.initHighlightingOnLoad()
 
 </script>
-
-
 
 
 

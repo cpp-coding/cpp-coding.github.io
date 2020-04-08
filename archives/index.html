@@ -4,68 +4,168 @@
     <meta charset="utf-8" >
 
 <title>文章归档 | 关于C++的一切</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586336195605">
-<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
-
-
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-
-    <meta name="description" content="关于C++的一切.
+<meta name="description" content="关于C++的一切.
 All about c++.
 我trl!
 您tjl!">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586336478683">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://cpp-coding.github.io">
-        <img src="https://cpp-coding.github.io/images/avatar.png?v=1586336195605" class="site-logo">
-        <h1 class="site-title">关于C++的一切</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://cpp-coding.github.io">关于C++的一切</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-          <a href="/" class="site-nav">
-            首页
-          </a>
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
         
-      
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
         
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
         
-      
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
         
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
+      </ul>
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+</nav>
+
+    
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          
+
+          <h2 class="archives-title">文章归档</h2>
+          <div class="archives-container">
+            
+              <h3 class="year" data-aos-delay="500">2020</h3>
+              
+                
+                  <article class="post">
+                    <a href="https://cpp-coding.github.io/single-source-shortest-route/">
+                      <h4 class="post-title">
+                        模板-单源最短路径
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://cpp-coding.github.io/fast-power/">
+                      <h4 class="post-title">
+                        模板-快速幂||取模运算
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://cpp-coding.github.io/disjoint-set/">
+                      <h4 class="post-title">
+                        模板-并查集
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://cpp-coding.github.io/Quick-sort/">
+                      <h4 class="post-title">
+                        模板-快速排序
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://cpp-coding.github.io/atcoder-150/">
+                      <h4 class="post-title">
+                         AtCoder 150
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://cpp-coding.github.io/hello-world/">
+                      <h4 class="post-title">
+                        Hello World!
+                      </h4>
+                    </a>
+                  </article>
+                
+              
+            
+          </div>
+        </div>
+        <div class="row flex-edges">
+  
+  
+</div>
+
+      </div>
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://cpp-coding.github.io/images/avatar.png?v=1586336478683" class="no-responsive avatar">
+    <div class="text-muted">关于C++的一切.
+All about c++.
+我trl!
+您tjl!</div>
     <div class="social-container">
       
         
@@ -79,115 +179,84 @@ All about c++.
         
       
     </div>
-    <div class="site-description">
-      关于C++的一切.
-All about c++.
-我trl!
-您tjl!
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
     </div>
-    <div class="site-footer">
-       | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/single-source-shortest-route/">模板-单源最短路径</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/fast-power/">模板-快速幂||取模运算</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/disjoint-set/">模板-并查集</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/Quick-sort/">模板-快速排序</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/atcoder-150/"> AtCoder 150</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/hello-world/">Hello World!</a>
+            </li>
+          
+        
+      </ul>
     </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://cpp-coding.github.io/templates/" class="badge warning">
+          模板
+        </a>
+      
+        <a href="https://cpp-coding.github.io/atcoder/" class="badge secondary">
+          Atcoder
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+     | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          
-
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2020</h2>
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/single-source-shortest-route/">
-                      <h2 class="post-title">
-                        模板-单源最短路径
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/fast-power/">
-                      <h2 class="post-title">
-                        模板-快速幂||取模运算
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/disjoint-set/">
-                      <h2 class="post-title">
-                        模板-并查集
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/Quick-sort/">
-                      <h2 class="post-title">
-                        模板-快速排序
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/atcoder-150/">
-                      <h2 class="post-title">
-                         AtCoder 150
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/hello-world/">
-                      <h2 class="post-title">
-                        Hello World!
-                      </h2>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
-
-          <div class="pagination-container">
-  
-  
-</div>
-
-        </div>
-      </div>
-    </div>
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
 <script type="application/javascript">
 
 AOS.init();
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+hljs.initHighlightingOnLoad()
 
 </script>
-
-
 
 
 
