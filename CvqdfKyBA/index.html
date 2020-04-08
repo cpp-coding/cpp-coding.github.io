@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>模板-快速幂||取模运算 | 关于C++的一切</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586317996689">
+<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="模板系列-快速幂||取模运算
+
+题面
+原题链接
+题目描述
+给你三个数 a,b,ka,b,ka,b,k ,求aba^b%kab
+输入格式
+输入只有三个整数 a,b,ka,b,ka,b,k
+输出格式
+输出一行一个字符串 a^b mod k=s，..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://cpp-coding.github.io">
+        <img src="https://cpp-coding.github.io/images/avatar.png?v=1586317996689" class="site-logo">
+        <h1 class="site-title">关于C++的一切</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      关于C++的一切.
+All about c++.
+我trl!
+您tjl!
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">模板-快速幂||取模运算</h2>
+            <div class="post-date">2020-04-08</div>
+            
+            <div class="post-content" v-pre>
+              <p>模板系列-快速幂||取模运算</p>
+<!-- more -->
+<h1 id="题面">题面</h1>
+<p><a href="https://www.luogu.com.cn/problem/P1226">原题链接</a></p>
+<h2 id="题目描述">题目描述</h2>
+<p>给你三个数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">a,b,k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> ,求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>a</mi><mi>b</mi></msup></mrow><annotation encoding="application/x-tex">a^b%k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="输入格式">输入格式</h2>
+<p>输入只有三个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">a,b,k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span></p>
+<h2 id="输出格式">输出格式</h2>
+<p>输出一行一个字符串 <code>a^b mod k=s</code>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">a,b,k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>分别为题目给定的值， s 为运算结果。</p>
+<h1 id="算法讲解">算法讲解</h1>
+<iframe width=480 height=270 src="/player.bilibili.com/player.html?aid=74202968&bvid=BV1LE411t7ie&cid=126939421&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<h1 id="ac-code">AC Code</h1>
+<pre><code class="language-c">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+    long long ans=1,i,j,k,m,n,b,p;
+    scanf(&quot;%lld%lld%lld&quot;,&amp;b,&amp;m,&amp;p);
+    printf(&quot;%lld^%lld mod %lld=&quot;,b,m,p);
+    while(m&gt;0){
+        if(m%2==1)
+            ans=ans*b%p;
+        b=b*b%p;
+        m=m&gt;&gt;1;
+    }
+    printf(&quot;%lld&quot;,ans%p);
+    return 0;
+}
+</code></pre>
+<h2 id="例题">例题</h2>
+<ul>
+<li>BZOJ1008(此处恕不给链接)</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://cpp-coding.github.io/98n43ps8n/">
+                  <h3 class="post-title">
+                    模板-并查集
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
