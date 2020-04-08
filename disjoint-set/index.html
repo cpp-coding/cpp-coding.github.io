@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>模板-并查集 | 关于C++的一切</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586336195605">
+<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="模板系列-并查集
+
+题面
+原题链接
+题目描述
+如题，现在有一个并查集，你需要完成合并和查询操作。
+输入格式
+第一行包含两个整数 N,MN,MN,M,表示共有 NNN 个元素和 MMM 个操作。
+接下来 MMM 行，每行包含三个整数 Zi,X..." />
+    <meta name="keywords" content="模板" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://cpp-coding.github.io">
+        <img src="https://cpp-coding.github.io/images/avatar.png?v=1586336195605" class="site-logo">
+        <h1 class="site-title">关于C++的一切</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      关于C++的一切.
+All about c++.
+我trl!
+您tjl!
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">模板-并查集</h2>
+            <div class="post-date">2020-04-08</div>
+            
+            <div class="post-content" v-pre>
+              <p>模板系列-并查集</p>
+<!-- more -->
+<h1 id="题面">题面</h1>
+<p><a href="https://www.luogu.com.cn/problem/P3367">原题链接</a></p>
+<h2 id="题目描述">题目描述</h2>
+<p>如题，现在有一个并查集，你需要完成合并和查询操作。</p>
+<h2 id="输入格式">输入格式</h2>
+<p>第一行包含两个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo separator="true">,</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N,M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span>,表示共有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> 个元素和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span> 个操作。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span></span></span></span> 行，每行包含三个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Z</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>X</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Z_i,X_i,Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p>当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Z</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">Z_i=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>时，将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>所在的集合合并。</p>
+<p>当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Z</mi><mi>i</mi></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">Z_i=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>时，输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>X</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">X_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>与 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是否在同一集合内，是的输出 <code>Y</code> ；否则输出 <code>N</code> 。</p>
+<h2 id="输出格式">输出格式</h2>
+<p>对于每一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Z</mi><mi>i</mi></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">Z_i=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>的操作，都有一行输出，每行包含一个大写字母，为 <code>Y</code> 或者 <code>N</code> 。</p>
+<h1 id="算法讲解">算法讲解</h1>
+<iframe width=480 height=270 src="//player.bilibili.com/player.html?aid=62084682&bvid=BV1ft411u7BJ&cid=107926284&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<h1 id="ac-code">AC Code</h1>
+<pre><code class="language-c">#include&lt;algorithm&gt;
+#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#define maxn 10000 + 10
+using namespace std;
+int n,m,opr,v,u;
+int fa[maxn];
+int find(int x){
+    if(x==fa[x]) return x;
+    else return find(fa[x]);
+    //路径压缩,最后一行可以改写成else return fa[x]=find(fa[x])
+}
+void merge(int x,int y){
+    if(find(x)!=find(y)) 
+        fa[find(x)]=fa[y];
+}
+bool query(int x,int y){
+    if(find(x)==find(y)) return true;
+    else return false;    
+}
+int main(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++) fa[i]=i;
+    for(int i=1;i&lt;=m;i++) {
+        scanf(&quot;%d%d%d&quot;,&amp;opr,&amp;u,&amp;v);
+        if(opr==1) merge(u,v);
+        else if(query(u,v)) printf(&quot;Y\n&quot;); 
+             else printf(&quot;N\n&quot;);
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="例题">例题</h2>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P2676">P2676 [USACO07DEC]Bookshelf B</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1897">P1897 电梯里的爱情	</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1296">P1296 奶牛的耳语</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1138">P1138 第k小整数</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4414">P4414 [COCI2006-2007#2] ABC</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1428">P1428 小鱼比可爱</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2637">P2637 第一次，第二次，成交！</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1208">P1208 [USACO1.3]混合牛奶 Mixing Milk</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1458">P1458 [USACO2.1]顺序的分数 Ordered Fractions</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1571">P1571 眼红的Medusa</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1400">P1400 塔【错题已隐藏】</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1223">P1223 排队接水</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1093">P1093 奖学金</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3955">P3955 图书管理员</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1583">P1583 魔法照片</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1097">P1097 统计数字</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1125">P1125 笨小猴</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1626">P1626 象棋比赛</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4379">P4379 [USACO18OPEN]Lemonade Line S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1866">P1866 编号</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1177">P1177 【模板】快速排序</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1918">P1918 保龄球</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1628">P1628 合并序列</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1334">P1334 瑞瑞的木板</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1515">P1515 旅行</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1195">P1195 口袋的天空</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4432">P4432 [COCI2017-2018#2] ​​ZigZag</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2397">P2397 yyy loves Maths VI (mode)</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1309">P1309 瑞士轮</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2782">P2782 友好城市</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1111">P1111 修复公路</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1158">P1158 导弹拦截</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1230">P1230 智力大冲浪</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1250">P1250 种树</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1733">P1733 DVD服务请求</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1168">P1168 中位数</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3076">P3076 [USACO13FEB]Taxi G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2061">P2061 [USACO07OPEN]City Horizon S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3367">P3367 【模板】并查集</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1551">P1551 亲戚</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2330">P2330 [SCOI2005]繁忙的都市</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3958">P3958 奶酪</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1656">P1656 炸铁路</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1396">P1396 营救</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3144">P3144 [USACO16OPEN]Closing the Farm S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P6121">P6121 [USACO16OPEN]Closing the Farm G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1546">P1546 [USACO3.1]最短网络 Agri-Net</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2078">P2078 朋友</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1455">P1455 搭配购买</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2256">P2256 一中校运会之百米跑</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1536">P1536 村村通</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2814">P2814 家谱</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2661">P2661 信息传递</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1547">P1547 [USACO05MAR]Out of Hay S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2820">P2820 局域网</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2658">P2658 汽车拉力比赛</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3420">P3420 [POI2005]SKA-Piggy Banks</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2835">P2835 刻录光盘</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2937">P2937 [USACO09JAN]Laserphones S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4047">P4047 [JSOI2010]部落划分</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1991">P1991 无线通讯网</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1892">P1892 [BOI2003]团伙</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1955">P1955 [NOI2015]程序自动分析</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5937">P5937 [CEOI1999]Parity Game</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1525">P1525 关押罪犯</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1621">P1621 集合</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2170">P2170 选学霸</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2024">P2024 [NOI2001]食物链</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4255">P4255 公主の#18文明游戏</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3073">P3073 [USACO13FEB]Tractor S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3068">P3068 [USACO13JAN]Party Invitations S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4145">P4145 上帝造题的七分钟2 / 花神游历各国</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2342">P2342 [USACO04OPEN]Cube Stacking G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4147">P4147 玉蟾宫</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2941">P2941 [USACO09FEB]Surround the Islands S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1640">P1640 [SCOI2010]连续攻击游戏</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1967">P1967 货车运输</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4185">P4185 [USACO18JAN]MooTube G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3130">P3130 [USACO15DEC]haybalesCounting Haybale P</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3127">P3127 [USACO15OPEN]Trapped in the Haybales G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3124">P3124 [USACO15OPEN]Trapped in the Haybales S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1197">P1197 [JSOI2008]星球大战</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5962">P5962 [BOI2004]ships 船</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4873">P4873 [USACO14DEC]Cow Jog G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3101">P3101 [USACO14JAN]Ski Course Rating G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1196">P1196 [NOI2002]银河英雄传说</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://cpp-coding.github.io/templates/" class="tag">
+                    模板
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://cpp-coding.github.io/Quick-sort/">
+                  <h3 class="post-title">
+                    模板-快速排序
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

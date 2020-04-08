@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cpp-coding.github.io</id>
     <title>关于C++的一切</title>
-    <updated>2020-04-08T03:53:20.015Z</updated>
+    <updated>2020-04-08T08:56:41.796Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cpp-coding.github.io"/>
     <link rel="self" href="https://cpp-coding.github.io/atom.xml"/>
@@ -14,9 +14,20 @@ All about c++.
     <icon>https://cpp-coding.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 关于C++的一切</rights>
     <entry>
+        <title type="html"><![CDATA[模板-单源最短路径]]></title>
+        <id>https://cpp-coding.github.io/single-source-shortest-route/</id>
+        <link href="https://cpp-coding.github.io/single-source-shortest-route/">
+        </link>
+        <updated>2020-04-08T03:54:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>模板系列-单源最短路径</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>模板系列-单源最短路径</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[模板-快速幂||取模运算]]></title>
-        <id>https://cpp-coding.github.io/CvqdfKyBA/</id>
-        <link href="https://cpp-coding.github.io/CvqdfKyBA/">
+        <id>https://cpp-coding.github.io/fast-power/</id>
+        <link href="https://cpp-coding.github.io/fast-power/">
         </link>
         <updated>2020-04-08T03:46:50.000Z</updated>
         <summary type="html"><![CDATA[<p>模板系列-快速幂||取模运算</p>
@@ -26,8 +37,8 @@ All about c++.
     </entry>
     <entry>
         <title type="html"><![CDATA[模板-并查集]]></title>
-        <id>https://cpp-coding.github.io/98n43ps8n/</id>
-        <link href="https://cpp-coding.github.io/98n43ps8n/">
+        <id>https://cpp-coding.github.io/disjoint-set/</id>
+        <link href="https://cpp-coding.github.io/disjoint-set/">
         </link>
         <updated>2020-04-08T03:02:30.000Z</updated>
         <summary type="html"><![CDATA[<p>模板系列-并查集</p>

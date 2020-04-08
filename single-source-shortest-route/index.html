@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>模板-单源最短路径 | 关于C++的一切</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586336195605">
+<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="模板系列-单源最短路径
+
+关于SPFA,他死了!!!
+关于SPFA,他死了!!!
+关于SPFA,他死了!!!
+关于SPFA,他死了!!!
+关于SPFA,他死了!!!
+关于SPFA,他死了!!!
+关于SPFA,他死了!!!
+题面
+原题链接(随..." />
+    <meta name="keywords" content="模板" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://cpp-coding.github.io">
+        <img src="https://cpp-coding.github.io/images/avatar.png?v=1586336195605" class="site-logo">
+        <h1 class="site-title">关于C++的一切</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      关于C++的一切.
+All about c++.
+我trl!
+您tjl!
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">模板-单源最短路径</h2>
+            <div class="post-date">2020-04-08</div>
+            
+            <div class="post-content" v-pre>
+              <p>模板系列-单源最短路径</p>
+<!-- more -->
+<h1 id="关于spfa他死了">关于SPFA,他死了!!!</h1>
+<h1 id="关于spfa他死了-2">关于SPFA,他死了!!!</h1>
+<h1 id="关于spfa他死了-3">关于SPFA,他死了!!!</h1>
+<h1 id="关于spfa他死了-4">关于SPFA,他死了!!!</h1>
+<h1 id="关于spfa他死了-5">关于SPFA,他死了!!!</h1>
+<h1 id="关于spfa他死了-6">关于SPFA,他死了!!!</h1>
+<h1 id="关于spfa他死了-7">关于SPFA,他死了!!!</h1>
+<h1 id="题面">题面</h1>
+<p><a href="https://www.luogu.com.cn/problem/P3371">原题链接(随机数据)</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P4779">原题链接(专卡SPFA)</a></p>
+<h2 id="题目描述">题目描述</h2>
+<p>如题，给出一个有向图，请输出从某一点出发到所有点的最短路径长度。</p>
+<h2 id="输入格式">输入格式</h2>
+<p>第一行包含三个整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo separator="true">,</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">n,m,s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span></span></span></span>,分别表示点的个数、有向边的个数、出发点的编号。</p>
+<p>接下来 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 行每行包含三个整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo separator="true">,</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">u,v,w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span>,表示一条 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo>→</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u \to v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 的，长度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span> 的边。</p>
+<h2 id="输出格式">输出格式</h2>
+<p>输出一行 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个整数，第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个表示 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span> 到第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个点的最短路径，若不能到达则输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>31</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{31}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</p>
+<h1 id="算法讲解">算法讲解</h1>
+<h2 id="dijkstra">Dijkstra</h2>
+<iframe width=480 height=270 src="//player.bilibili.com/player.html?aid=99350813&bvid=BV1k741117pp&cid=169592499&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<h2 id="bellman-ford">Bellman-Ford</h2>
+<iframe width=480 height=270 src="//player.bilibili.com/player.html?aid=57484499&bvid=BV1hx411X7qY&cid=100356668&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<h1 id="ac-code">AC Code</h1>
+<h2 id="in-dijkstra">In Dijkstra</h2>
+<pre><code class="language-c">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;queue&gt;
+#include&lt;stack&gt;
+#include&lt;map&gt;
+#include&lt;sstream&gt;
+using namespace std;
+typedef long long ll;
+const int maxn = 1e3 + 10;
+const int INF = 1 &lt;&lt; 30;
+int T, n, m;
+int Map[maxn][maxn];//邻接矩阵存图
+int v[maxn];//v[i] = 1表示已加入集合S
+int d[maxn];//dist[i]表示距离源点的最短距离
+int path[maxn];//记录路径
+void dijkstra(int u0)//求顶点为u到其他顶点的最短路
+{
+    memset(v, 0, sizeof(v));
+    for(int i = 0; i &lt; n; i++)d[i] = (i == u0 ? 0 : INF);
+    for(int i = 0; i &lt; n; i++)path[i] = -1;
+    for(int i = 0; i &lt; n; i++)//每次加入一个节点，循环n次
+    {
+        int x, m = INF;
+        for(int y = 0; y &lt; n; y++)if(!v[y] &amp;&amp; d[y] &lt;= m)m = d[x = y];//记录当前最小值
+        v[x] = 1;//标记已经加入集合
+        for(int y = 0; y &lt; n; y++)
+        {
+            if(d[y] &gt; d[x] + Map[x][y])//松弛操作
+            {
+                d[y] = d[x] + Map[x][y];
+                path[y] = x;
+            }
+        }
+    }
+    for(int i = 0; i &lt; n; i++)
+    {
+        if(i == u0)continue;
+        printf(&quot;从%d到%d距离是：%2d   &quot;, u0, i, d[i]);
+        stack&lt;int&gt;q;
+        int x = i;
+        while(path[x] != -1)
+        {
+            q.push(x);
+            x = path[x];
+        }
+        cout&lt;&lt;u0;
+        while(!q.empty())
+        {
+            cout&lt;&lt;&quot;-&gt;&quot;&lt;&lt;q.top();
+            q.pop();
+        }
+        cout&lt;&lt;endl;
+    }
+}
+int main()
+{
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 0; i &lt; n; i++)
+    {
+        for(int j = 0; j &lt; n; j++)
+        {
+            if(i == j)Map[i][j] = 0;
+            else Map[i][j] = INF;
+        }
+    }
+    int x, y, z;
+    for(int i = 0; i &lt; m; i++)
+    {
+        cin &gt;&gt; x &gt;&gt; y &gt;&gt; z;
+        Map[x][y] = z;
+    }
+    dijkstra(0);
+    return 0;
+}
+</code></pre>
+<h2 id="in-bellman-ford">In Bellman-Ford</h2>
+<pre><code class="language-c">
+ 
+#include &lt;iostream&gt;
+using namespace std;
+const int maxnum = 100;
+const int maxint = 99999;
+ 
+// 边，
+typedef struct Edge{
+int u, v; // 起点，重点
+int weight; // 边的权值
+}Edge;
+ 
+Edge edge[maxnum]; // 保存边的值
+int dist[maxnum]; // 结点到源点最小距离
+ 
+int nodenum, edgenum, source; // 结点数，边数，源点
+ 
+// 初始化图
+void init()
+{
+// 输入结点数，边数，源点
+cin &gt;&gt; nodenum &gt;&gt; edgenum &gt;&gt; source;
+for(int i=1; i&lt;=nodenum; ++i)
+dist[i] = maxint;
+dist[source] = 0;
+for(int i=1; i&lt;=edgenum; ++i)
+{
+cin &gt;&gt; edge[i].u &gt;&gt; edge[i].v &gt;&gt; edge[i].weight;
+if(edge[i].u == source) //注意这里设置初始情况
+dist[edge[i].v] = edge[i].weight;
+}
+}
+ 
+// 松弛计算
+void relax(int u, int v, int weight)
+{
+if(dist[v] &gt; dist[u] + weight)
+dist[v] = dist[u] + weight;
+}
+ 
+bool Bellman_Ford()
+{
+for(int i=1; i&lt;=nodenum-1; ++i)
+for(int j=1; j&lt;=edgenum; ++j)
+relax(edge[j].u, edge[j].v, edge[j].weight);
+bool flag = 1;
+// 判断是否有负环路
+for(int i=1; i&lt;=edgenum; ++i)
+if(dist[edge[i].v] &gt; dist[edge[i].u] + edge[i].weight)
+{
+flag = 0;
+break;
+}
+return flag;
+}
+int main()
+{
+//freopen(&quot;input3.txt&quot;, &quot;r&quot;, stdin);
+init();
+if(Bellman_Ford())
+for(int i = 1 ;i &lt;= nodenum; i++)
+cout &lt;&lt; dist[i] &lt;&lt; endl;
+return 0;
+}
+</code></pre>
+<h1 id="例题">例题</h1>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P2910">P2910 [USACO08OPEN]Clear And Present Danger S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3371">P3371 【模板】单源最短路径（弱化版）</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1359">P1359 租用游艇</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2984">P2984 [USACO10FEB]Chocolate Giving S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1656">P1656 炸铁路</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P6175">P6175 无向图的最小环问题</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5651">P5651 基础最短路练习题</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1396">P1396 营救</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1339">P1339 [USACO09OCT]Heat Wave G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2299">P2299 Mzc和体委的争夺战</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1821">P1821 [USACO07FEB]Silver Cow Party S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1529">P1529 [USACO2.4]回家 Bessie Come Home</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1364">P1364 医院设置</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3842">P3842 [TJOI2007]线段</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3905">P3905 道路重建</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2951">P2951 [USACO09OPEN]Hide and Seek S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2888">P2888 [USACO07NOV]Cow Hurdles S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1629">P1629 邮递员送信</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1690">P1690 贪婪的Copy</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1144">P1144 最短路计数</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4822">P4822 [BJWC2012]冻结</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2938">P2938 [USACO09FEB]Stock Market G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2937">P2937 [USACO09JAN]Laserphones S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1078">P1078 文化之旅</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1522">P1522 [USACO2.4]牛的旅行 Cow Tours</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1576">P1576 最小花费</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1825">P1825 [USACO11OPEN]Corn Maze S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3818">P3818 小A和uim之大逃离 II</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5663">P5663 加工零件</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1938">P1938 [USACO09NOV]Job Hunt S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3063">P3063 [USACO12DEC]Milk Routing S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5905">P5905 【模板】Johnson 全源最短路</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2176">P2176 [USACO11DEC]RoadBlock S / [USACO14FEB]Roadblock G/S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5530">P5530 [BOI 2002]双调路径</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3906">P3906 Geodetic集合</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4554">P4554 小明的游戏</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2285">P2285 [HNOI2004]打鼹鼠</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3115">P3115 [USACO15JAN]Cow Routing S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2966">P2966 [USACO09DEC]Cow Toll Paths G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1930">P1930 [USACO3.3]亚瑟王的宫殿</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2876">P2876 [USACO07JAN]Problem Solving G</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4667">P4667 [BalticOI 2011 Day1]Switch the Lamp On</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1099">P1099 树网的核</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1613">P1613 跑路</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1119">P1119 灾后重建</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4772">P4772 灰化肥，会挥发</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P1875">P1875 佳佳的魔法药水</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3110">P3110 [USACO14DEC]Piggy Back S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3003">P3003 [USACO10DEC]Apple Delivery S</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5700">P5700 [CTSC1998]罗杰游戏</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://cpp-coding.github.io/templates/" class="tag">
+                    模板
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://cpp-coding.github.io/fast-power/">
+                  <h3 class="post-title">
+                    模板-快速幂||取模运算
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
