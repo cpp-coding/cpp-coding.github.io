@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>模板-快速排序 | 关于C++的一切</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586305723738">
+<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="模板系列-快速排序
+
+题面
+原题链接
+题目描述
+利用快速排序算法将读入的 N 个数从小到大排序后输出。
+快速排序是信息学竞赛的必备算法之一。对于快速排序不是很了解的同学可以自行上网查询相关资料，掌握后独立完成。（C++ 选手请不要试图使用 ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://cpp-coding.github.io">
+        <img src="https://cpp-coding.github.io/images/avatar.png?v=1586305723738" class="site-logo">
+        <h1 class="site-title">关于C++的一切</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      关于C++的一切.
+All about c++.
+我trl!
+您tjl!
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">模板-快速排序</h2>
+            <div class="post-date">2020-04-08</div>
+            
+            <div class="post-content" v-pre>
+              <p>模板系列-快速排序</p>
+<!-- more -->
+<h2 id="题面">题面</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1177">原题链接</a></p>
+<h3 id="题目描述">题目描述</h3>
+<p>利用快速排序算法将读入的 N 个数从小到大排序后输出。</p>
+<p>快速排序是信息学竞赛的必备算法之一。对于快速排序不是很了解的同学可以自行上网查询相关资料，掌握后独立完成。（C++ 选手请不要试图使用 STL，虽然你可以使用 sort 一遍过，但是你并没有掌握快速排序算法的精髓。）</p>
+<h3 id="输入格式">输入格式</h3>
+<p>第 11 行为一个正整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>，第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 行包含 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> 个空格隔开的正整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> ，为你需要进行排序的数，数据保证了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">A_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 不超过 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span> 。</p>
+<h3 id="输出格式">输出格式</h3>
+<p>将给定的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个数从小到大输出，数之间空格隔开，行末换行且无空格。</p>
+<h2 id="算法讲解">算法讲解</h2>
+<p>点一下两个分隔符之间,如果B站视频解析不出,可以使用<a href="player.bilibili.com/player.html?aid=62621532&amp;bvid=BV1at411T75o&amp;cid=108813206&amp;page=1">直链</a></p>
+<hr>
+<iframe width=480 height=270 src="//player.bilibili.com/player.html?aid=62621532&bvid=BV1at411T75o&cid=108813206&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+***
+<h2 id="ac-codeno-stl">AC Code(No STL)</h2>
+<pre><code class="language-c">#include&lt;iostream&gt;
+using namespace std;
+int n,a[1000001];
+void qsort(int l,int r)//应用二分思想
+{
+    int mid=a[(l+r)/2];//中间数
+    int i=l,j=r;
+    do{
+        while(a[i]&lt;mid) i++;//查找左半部分比中间数大的数
+        while(a[j]&gt;mid) j--;//查找右半部分比中间数小的数
+        if(i&lt;=j)//如果有一组不满足排序条件（左小右大）的数
+        {
+            swap(a[i],a[j]);//交换
+            i++;
+            j--;
+        }
+    }while(i&lt;=j);//这里注意要有=
+    if(l&lt;j) qsort(l,j);//递归搜索左半部分
+    if(i&lt;r) qsort(i,r);//递归搜索右半部分
+}
+int main()
+{
+    cin&gt;&gt;n;
+    for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i];
+    qsort(1,n);
+    for(int i=1;i&lt;=n;i++) cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+}
+</code></pre>
+<p><s>好吧,再给一种STL的</s></p>
+<pre><code class="language-c">#include&lt;iostream&gt;
+#include &quot;algorithm&quot;
+#include &quot;string.h&quot;
+using namespace std;
+int main(){
+    long long a[100000];
+    int n;
+    cin&gt;&gt;n;
+    for (int i = 0; i &lt; n; i++)
+    {
+        cin&gt;&gt;a[i];
+    }
+    sort(a,a+n);
+    for (int i = 0; i &lt; n; i++)
+    {
+        cout&lt;&lt;a[i];
+        if(i&lt;n){
+            cout&lt;&lt;&quot; &quot;;
+        }
+    }
+    cout&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://cpp-coding.github.io/atcoder-150/">
+                  <h3 class="post-title">
+                     AtCoder 150
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

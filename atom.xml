@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cpp-coding.github.io</id>
     <title>关于C++的一切</title>
-    <updated>2020-04-07T23:58:41.636Z</updated>
+    <updated>2020-04-08T00:29:15.381Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cpp-coding.github.io"/>
     <link rel="self" href="https://cpp-coding.github.io/atom.xml"/>
@@ -13,6 +13,17 @@ All about c++.
     <logo>https://cpp-coding.github.io/images/avatar.png</logo>
     <icon>https://cpp-coding.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 关于C++的一切</rights>
+    <entry>
+        <title type="html"><![CDATA[模板-快速排序]]></title>
+        <id>https://cpp-coding.github.io/Quick-sort/</id>
+        <link href="https://cpp-coding.github.io/Quick-sort/">
+        </link>
+        <updated>2020-04-07T23:59:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>模板系列-快速排序</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>模板系列-快速排序</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ AtCoder 150]]></title>
         <id>https://cpp-coding.github.io/atcoder-150/</id>
