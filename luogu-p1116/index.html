@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | 关于C++的一切</title>
+<title>Luogu P1116 | 关于C++的一切</title>
 <meta name="description" content="关于C++的一切.
 All about c++.
 我trl!
@@ -26,6 +26,7 @@ All about c++.
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://cpp-coding.github.io">关于C++的一切</a></h3>
@@ -79,106 +80,86 @@ All about c++.
   </div>
 </nav>
 
-    
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          
+          <article class="article">
+            <h1>Luogu P1116</h1>
+            <p class="article-meta">
+              2020-04-09
+              
+                <a href="https://cpp-coding.github.io/luogu/" class="badge ">
+                  Luogu
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>Luogu P1116 车厢重组 (入门)</p>
+<!-- more -->
+<h1 id="p1116">P1116</h1>
+<h2 id="题面">题面</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1116">P1116</a></p>
+<h2 id="题目">题目</h2>
+<h3 id="题目描述">题目描述</h3>
+<p>在一个旧式的火车站旁边有一座桥，其桥面可以绕河中心的桥墩水平旋转。一个车站的职工发现桥的长度最多能容纳两节车厢，如果将桥旋转<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>180</mn></mrow><annotation encoding="application/x-tex">180</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord">0</span></span></span></span>度，则可以把相邻两节车厢的位置交换，用这种方法可以重新排列车厢的顺序。于是他就负责用这座桥将进站的车厢按车厢号从小到大排列。他退休后，火车站决定将这一工作自动化，其中一项重要的工作是编一个程序，输入初始的车厢顺序，计算最少用多少步就能将车厢排序。</p>
+<h3 id="输入格式">输入格式</h3>
+<p>共两行</p>
+<p>第一行是车厢总数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>(</mo><mo>≤</mo><mn>10000</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">N( \le 10000)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></p>
+<p>第二行是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>个不同的数表示初始的车厢顺序。</p>
+<h3 id="输出格式">输出格式</h3>
+<p>一个整数，最少的旋转次数。</p>
+<h2 id="输入输出样例">输入输出样例</h2>
+<p>输入 #1</p>
+<pre><code>4
+4 3 2 1
+</code></pre>
+<p>输出 #1</p>
+<pre><code>6
+</code></pre>
+<h2 id="提交地址"><a href="https://www.luogu.com.cn/problem/P1116#submit">提交地址</a></h2>
+<h2 id="ac-code">AC Code</h2>
+<pre><code class="language-c">#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+long n, i, j, t, s, a[10000];
+int main()
+{
+    cin &gt;&gt; n;
+    for (i = 1; i &lt;= n; i++)
+        cin &gt;&gt; a[i];
+    for (i = 1; i &lt;= n - 1; i++)
+        for (j = 1; j &lt;= n - i; j++)
+            if (a[j] &gt; a[j + 1])
+            {
+                swap(a[j], a[j + 1]);
+                s++;
+            }
+    cout &lt;&lt; s;
+    return 0;
+}
+</code></pre>
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h3 class="year" data-aos-delay="500">2020</h3>
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/luogu-p1116/">
-                      <h4 class="post-title">
-                        Luogu P1116
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/tree-diameter/">
-                      <h4 class="post-title">
-                        模板-树的直径
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/single-source-shortest-route/">
-                      <h4 class="post-title">
-                        模板-单源最短路径
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/fast-power/">
-                      <h4 class="post-title">
-                        模板-快速幂||取模运算
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/disjoint-set/">
-                      <h4 class="post-title">
-                        模板-并查集
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/Quick-sort/">
-                      <h4 class="post-title">
-                        模板-快速排序
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/atcoder-150/">
-                      <h4 class="post-title">
-                         AtCoder 150
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://cpp-coding.github.io/hello-world/">
-                      <h4 class="post-title">
-                        Hello World!
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://cpp-coding.github.io/tree-diameter/">
+                <h3 class="post-title">
+                  模板-树的直径
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://cpp-coding.github.io/images/avatar.png?v=1586439339178" class="no-responsive avatar">
@@ -264,7 +245,7 @@ All about c++.
     </div>
     <div class="row">
       
-        <a href="https://cpp-coding.github.io/luogu/" class="badge success">
+        <a href="https://cpp-coding.github.io/luogu/" class="badge secondary">
           Luogu
         </a>
       
@@ -272,7 +253,7 @@ All about c++.
           模板
         </a>
       
-        <a href="https://cpp-coding.github.io/atcoder/" class="badge secondary">
+        <a href="https://cpp-coding.github.io/atcoder/" class="badge success">
           Atcoder
         </a>
       
@@ -283,6 +264,8 @@ All about c++.
   </div>
 </div>
 
+
+    </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 

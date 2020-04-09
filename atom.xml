@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cpp-coding.github.io</id>
     <title>关于C++的一切</title>
-    <updated>2020-04-08T09:14:35.902Z</updated>
+    <updated>2020-04-09T13:35:43.365Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cpp-coding.github.io"/>
     <link rel="self" href="https://cpp-coding.github.io/atom.xml"/>
@@ -13,6 +13,28 @@ All about c++.
     <logo>https://cpp-coding.github.io/images/avatar.png</logo>
     <icon>https://cpp-coding.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 关于C++的一切</rights>
+    <entry>
+        <title type="html"><![CDATA[Luogu P1116]]></title>
+        <id>https://cpp-coding.github.io/luogu-p1116/</id>
+        <link href="https://cpp-coding.github.io/luogu-p1116/">
+        </link>
+        <updated>2020-04-09T13:30:28.000Z</updated>
+        <summary type="html"><![CDATA[<p>Luogu P1116 车厢重组 (入门)</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Luogu P1116 车厢重组 (入门)</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模板-树的直径]]></title>
+        <id>https://cpp-coding.github.io/tree-diameter/</id>
+        <link href="https://cpp-coding.github.io/tree-diameter/">
+        </link>
+        <updated>2020-04-09T06:54:12.000Z</updated>
+        <summary type="html"><![CDATA[<p>模板系列-树的直径</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>模板系列-树的直径</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[模板-单源最短路径]]></title>
         <id>https://cpp-coding.github.io/single-source-shortest-route/</id>

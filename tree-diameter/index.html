@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>模板-树的直径 | 关于C++的一切</title>
+<meta name="description" content="关于C++的一切.
+All about c++.
+我trl!
+您tjl!">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://cpp-coding.github.io/favicon.ico?v=1586439339178">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://cpp-coding.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://cpp-coding.github.io">关于C++的一切</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>模板-树的直径</h1>
+            <p class="article-meta">
+              2020-04-09
+              
+                <a href="https://cpp-coding.github.io/templates/" class="badge success">
+                  模板
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>模板系列-树的直径</p>
+<!-- more -->
+<h1 id="概念与定义">概念与定义</h1>
+<p>我们将一棵树<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>=</mo><mo>(</mo><mi>V</mi><mo separator="true">,</mo><mi>E</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">T = ( V,E )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span>的直径定义为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mi>δ</mi><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>∈</mo><mi>V</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">maxδ ( u,v ) ( u,v ∈ V )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span>，也就是说，树中所有最短路径距离的最大值即为树的直径。</p>
+<p>对于树的直径，主要有两种做法，一种是用两次 bfs(或者 dfs)，另一种是用树形 DP.</p>
+<p>例题传送门 <a href="http://poj.org/problem?id=1985">Cow Marathon</a></p>
+<h1 id="讲解">讲解</h1>
+<iframe width=480 height=270 src="//player.bilibili.com/player.html?aid=710061385&bvid=BV14Q4y1M71Q&cid=171395906&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+# AC Code
+## BFS 求解
+<p>其实 DFS 也一样的</p>
+<blockquote>
+<p>使用 BFS/DFS 遍历找到最远的节点</p>
+</blockquote>
+<pre><code class="language-c">int bfs(int t){
+    memset(v,0,sizeof(v));
+    memset(dis,0,sizeof(dis));
+    queue&lt;int&gt; q;
+    v[t] = 1;
+    int maxx = 0;
+    int index = t;
+    while (q.size())
+    {
+        int x=q.front();
+        q.pop();
+        for (size_t i = 1; i; i = Next(i))
+        {
+            int y=ver[i];
+            if(!v[y]){
+                dis[y]=dis[x]+edge[i];
+                if (dis[y] &gt; maxx)
+                {
+                    maxx = dis[y];
+                    index = y;
+                }
+                v[y] =1 ;
+                q.push(y);
+            }
+        }
+    }
+    return index;
+}
+
+int main() {
+    int Q = bfs(1);//找到距离1#点最远的Q
+    int W = bfs(Q);//找到距离Q点最远的W
+}
+</code></pre>
+<hr>
+<h2 id="树形-dp-求解">树形 DP 求解</h2>
+<p>对于每个节点我们要记录两个值：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mn>1</mn><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f1[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>表示以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>为根的子树中,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>到叶子结点距离的最大值</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mn>2</mn><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f2 [ i ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">2</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>表示以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>为根的子树中,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>到叶子结点距离的次大值</p>
+<p>对于一个节点，它到叶子结点距离的最大值和次大致所经过的路径肯定是不一样的</p>
+<p>若 j 是 i 的儿子，那么(下面的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">w [ i ][ j ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>的路径长度)：</p>
+<blockquote>
+<p>若 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mn>1</mn><mo>[</mo><mi>i</mi><mo>]</mo><mo>&lt;</mo><mi>f</mi><mn>1</mn><mo>[</mo><mi>j</mi><mo>]</mo><mo>+</mo><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mo>&gt;</mo><mi>f</mi><mn>2</mn><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>f</mi><mn>1</mn><mo>[</mo><mi>i</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f1 [ i ] &lt; f1 [ j ] + w [ i ][ j ] =&gt; f2 [ i ] = f1 [ i ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">2</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mn>1</mn><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>f</mi><mn>1</mn><mo>[</mo><mi>j</mi><mo>]</mo><mo>+</mo><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">f1 [ i ] = f1 [ j ] + w [ i ][ j ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>;</p>
+<p>否则, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">若</mi><mi>f</mi><mn>2</mn><mo>[</mo><mi>i</mi><mo>]</mo><mo>&lt;</mo><mi>f</mi><mn>1</mn><mo>[</mo><mi>j</mi><mo>]</mo><mo>+</mo><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mo>&gt;</mo><mi>f</mi><mn>2</mn><mo>[</mo><mi>i</mi><mo>]</mo><mo>=</mo><mi>f</mi><mn>1</mn><mo>[</mo><mi>j</mi><mo>]</mo><mo>+</mo><mi>w</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">若 f2 [ i ] &lt; f1 [ j ] + w [ i ][ j ]=&gt;f2 [ i ] = f1 [ j ] + w [ i ][ j ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">若</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">2</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">2</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>;</p>
+</blockquote>
+<p>理解：这样做就是，先看能否更新最大值，若能，它的次大值就是原先的最大值，再更新它的最大值；若不能，就看能不能更新次大值，若能，就更新，不能就不管它</p>
+<p>这样的话，最后的答案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mi>w</mi><mi>e</mi><mi>r</mi><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mrow><mi>f</mi><mn>1</mn><mo>[</mo><mi>i</mi><mo>]</mo><mo>+</mo><mi>f</mi><mn>2</mn><mo>[</mo><mi>i</mi><mo>]</mo></mrow></mrow><annotation encoding="application/x-tex">answer = max { f1 [ i ] + f2 [ i ] }</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord">2</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span></span></p>
+<h3 id="跟-dp-真像啊那代码呢">跟 DP 真像啊!那代码呢?</h3>
+<pre><code class="language-c">#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int N=100005;
+int n,m,t,ans;
+int f1[N],f2[N];
+int first[N],v[N],w[N],next[N];
+void add(int x,int y,int z)
+{
+	t++;
+	next[t]=first[x];
+	first[x]=t;
+	v[t]=y;
+	w[t]=z;
+}
+void dp(int x,int father)
+{
+	int i,j;
+	for(i=first[x];i;i=next[i])
+	{
+		j=v[i];
+		if(j==father)
+		  continue;
+		dp(j,x);
+		if(f1[x]&lt;f1[j]+w[i])
+		{
+			f2[x]=f1[x];
+			f1[x]=f1[j]+w[i];
+		}
+		else if(f2[x]&lt;f1[j]+w[i])
+		  f2[x]=f1[j]+w[i];
+		ans=max(ans,f1[x]+f2[x]);
+	}
+}
+int main()
+{
+	int x,y,z,i;
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(i=1;i&lt;=m;++i)
+	{
+		scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+		add(x,y,z);
+		add(y,x,z);
+	}
+	dp(1,0);
+	printf(&quot;%d&quot;,ans);
+	return 0;
+}
+</code></pre>
+<h2 id="例题">例题</h2>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P2195">P2195 HXY 造公园</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2491">P2491 [SDOI2011]消防</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P2610">P2610 [ZJOI2012]旅游</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3304">P3304 [SDOI2013]直径</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P3629">P3629 [APIO2010]巡逻</a>
+<ul>
+<li>本题代码</li>
+<li><a href="https://www.luogu.com.cn/blog/lscsznmhw/solution-p3629">本题题解</a></li>
+</ul>
+</li>
+<li><a href="https://www.luogu.com.cn/problem/P3761">P3761 [TJOI2017]城市</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4381">P4381 [IOI2008]Island</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4383">P4383 [八省联考 2018]林克卡特树</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P4408">P4408 [NOI2003]逃学的小孩</a></li>
+<li><a href="https://www.luogu.com.cn/problem/P5536">P5536 【XR-3】核心城市</a></li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://cpp-coding.github.io/single-source-shortest-route/">
+                <h3 class="post-title">
+                  模板-单源最短路径
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://cpp-coding.github.io/images/avatar.png?v=1586439339178" class="no-responsive avatar">
+    <div class="text-muted">关于C++的一切.
+All about c++.
+我trl!
+您tjl!</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/luogu-p1116/">Luogu P1116</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/tree-diameter/">模板-树的直径</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/single-source-shortest-route/">模板-单源最短路径</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/fast-power/">模板-快速幂||取模运算</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/disjoint-set/">模板-并查集</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/Quick-sort/">模板-快速排序</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/atcoder-150/"> AtCoder 150</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cpp-coding.github.io/hello-world/">Hello World!</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://cpp-coding.github.io/luogu/" class="badge secondary">
+          Luogu
+        </a>
+      
+        <a href="https://cpp-coding.github.io/templates/" class="badge ">
+          模板
+        </a>
+      
+        <a href="https://cpp-coding.github.io/atcoder/" class="badge secondary">
+          Atcoder
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+     | <a class="rss" href="https://cpp-coding.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
